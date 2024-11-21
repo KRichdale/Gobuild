@@ -1,6 +1,6 @@
 <template>
   <!-- Dialog Component -->
-  <v-dialog v-model="dialog" :fullscreen="isMobile" max-width="600" :draggable="true">
+  <v-dialog v-model="dialog" :fullscreen="isMobile" max-width="600">
     <!-- Activator Slot -->
     <template #activator="{ props }">
       <v-btn
@@ -17,14 +17,9 @@
 
     <!-- Dialog Content -->
     <v-card>
-      <!-- Card Title with Logo -->
+      <!-- Card Title with Centered Logo -->
       <v-card-title class="text-center">
-        <v-img
-          width="140"
-          height="40"
-          :src="Logo"
-          cover
-        />
+        <Logo class="Logo" />
       </v-card-title>
 
       <!-- Form -->
@@ -85,17 +80,17 @@
         <!-- Form Actions -->
         <v-card-actions style="display: flex; justify-content: space-between;">
           <v-btn
-            text
+            variant="text"
             color="grey"
             to="/Terms"
-            size="large"
+            size="x-small"
           >
             Terms of Service
           </v-btn>
 
           <div style="display: flex; align-items: center;">
             <v-btn
-              text
+              variant="text"
               @click="closeDialog"
               color="grey"
               style="margin-right: 16px;"
@@ -122,7 +117,7 @@
     <v-snackbar
       v-model="snackbar"
       timeout="3000"
-      location="top center"
+      location="top"
       color="success"
     >
       Thank you for contacting us, we will be in touch shortly!
@@ -133,7 +128,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { useDisplay } from 'vuetify';
-import Logo from '@/assets/goclean-logo.svg';
+import Logo from '@/assets/goclean-logo.svg'; // Ensure SVG is handled correctly
 import { db } from '../fb.js';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { getAnalytics, logEvent } from 'firebase/analytics';
@@ -264,32 +259,146 @@ const validate = async () => {
 </script>
 
 <style scoped>
+/* Logo */
+.Logo {
+  width: 135px;
+  max-height: 60px;
+  z-index: 1000;
+  display: block;
+  margin: 0 auto; /* Center horizontally */
+}
+
+/* Dialog Card */
+.v-card {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column; /* Ensure children stack vertically */
+}
+
+/* Card Title with Logo */
 .v-card-title {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 0;
-  margin: 0;
+  justify-content: center; /* Ensure horizontal centering */
+  padding: 24px 16px 16px;
 }
 
+.v-card-title .v-img {
+  border-radius: 0;
+}
+
+/* Form Fields */
+.v-text-field,
+.v-textarea {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.v-text-field input,
+.v-textarea textarea {
+  padding-left: 16px;
+}
+
+.v-input__control {
+  padding-bottom: 8px;
+}
+
+.v-label {
+  font-weight: 500;
+  color: #555;
+}
+
+/* Buttons */
 .v-btn {
   text-transform: none;
+  font-weight: 600;
+  flex-grow: 0;   /* Prevent buttons from stretching */
+  flex-shrink: 0;
 }
 
-.v-img {
-  width: 140px;
-  height: auto;
-  max-height: 60px;
+.v-btn--variant-text {
+  color: #00aeef;
 }
 
-@media (max-width: 600px) {
-  .v-img {
-    width: 126px; /* 10% smaller */
-  }
+.v-btn--variant-elevated {
+  background-color: #00aeef;
+  color: #fff;
 }
 
-.v-card-actions div {
+.v-btn--variant-elevated:hover {
+  background-color: #0099cc;
+}
+
+/* Form Actions */
+.v-card-actions {
+  padding: 16px;
   display: flex;
-  align-items: center;
+  justify-content: space-between; /* Adjusted to space between */
+  align-items: center;       /* Prevent vertical stretching */
+}
+
+.v-card-actions .v-btn {
+  margin-left: 8px;
+}
+
+.v-card-actions .v-btn:first-child {
+  margin-left: 0;
+}
+
+/* Snackbar */
+.v-snackbar {
+  border-radius: 8px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center; /* Center the snackbar content */
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+  .v-card {
+    border-radius: 0;
+  }
+
+  .v-card-title {
+    padding: 16px 8px 8px;
+  }
+
+  .v-btn {
+    margin-right: 2px; 
+    justify-content: center;
+  }
+
+  .v-card-actions {
+    flex-direction: column;
+    align-items: center; /* Center buttons instead of stretching */
+  }
+
+  .v-card-actions .v-btn {
+    margin: 8px 0;
+    width: 100%;        /* Ensure buttons span full width */
+  }
+
+  .v-card-actions .v-btn:last-child {
+    margin-bottom: 0;
+  }
+
+  .v-card-actions v-btn[to="/Terms"] {
+    order: 3;
+    margin-top: 8px;
+  }
+
+  .v-card-actions v-btn[type="submit"] {
+    order: 1;
+    margin-top: 8px;
+  }
+
+  .v-card-actions div {
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 </style>

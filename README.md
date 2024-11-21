@@ -1,5 +1,8 @@
 # GoBuild
 
+Dark blue: (clean) #2e3192
+Light blue: (Go) #00aeef
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
