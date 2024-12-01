@@ -1,7 +1,9 @@
 <template>
   <div class="home">
+    <lander />
 <ServiceCard />
 <MidPhotoSection />
+<faqs />
 
   </div>
 </template>

@@ -1,6 +1,29 @@
 <template>
   <section class="midPhotoSection">
     <v-container fluid>
+      
+      <!-- New Title Section -->
+      <v-container fluid style="text-align: center; margin: 100px 0">
+        <v-card variant="text">
+          <h1
+            :class="[
+              smAndDown ? 'text-h2' : 'text-h1',
+              'font-black',
+              'text-black',
+            ]"
+            style="margin: 24px 0; padding: 24px 0;"
+          >
+            Full Insurance
+          </h1>
+          <h3
+            class="subheading text-black"
+            style="margin-bottom: 24px; font-weight: normal;"
+          >
+            Cover up to 1 million dollars for your most valuable asset <br />
+          </h3>
+        </v-card>
+      </v-container>
+
       <!-- First Row -->
       <v-row style="padding-bottom: 64px;">
         <v-col cols="12" md="6">
@@ -133,11 +156,14 @@ const { smAndDown, mdAndUp } = useDisplay();
 $primary-color: #00aeef;
 
 .content-section {
-  background: rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 1000;
+  background: #ffffff;
   padding: 2rem;
   border-radius: 12px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  // Removed backdrop-filter and box-shadow for a solid appearance
+  // backdrop-filter: blur(10px);
+  // box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Media Queries for Enhanced Responsiveness */
@@ -148,7 +174,38 @@ $primary-color: #00aeef;
 }
 
 /* Custom Font Weight Classes */
+.font-black {
+    font-weight: 900;
+  }
+
 .font-bold {
   font-weight: bold;
+}
+
+.title-section {
+  padding: 2rem 1rem;
+  margin: 2rem 0;
+}
+
+.section-title {
+  color: #000000;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Apply ServiceCard Title Styles */
+h1 {
+  margin: 48px 0;
+  padding: 48px 0;
+  @extend .font-black;
+  @extend .text-black;
+}
+
+h3.subheading {
+  margin-bottom: 48px;
+  font-weight: normal;
+  @extend .text-black;
 }
 </style>

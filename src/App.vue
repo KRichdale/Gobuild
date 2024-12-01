@@ -10,6 +10,9 @@
         <router-view></router-view>
       </v-container>
     </v-main>
+    <Footer />
+    
+    <!-- Add the Bubbles component -->
   </v-app>
 </template>
 
@@ -20,6 +23,8 @@ import NavDraw from '@/components/nav/nav-draw.vue';
 import LogoIcon from '@/assets/goclean-logo.svg'; // Ensure SVG is handled correctly by vite-svg-loader
 import Dialog1 from '@/components/dialog1.vue';
 import Footer from '@/components/footer/footer.vue';
+// Import the new Bubbles component
+import Bubbles from '@/components/bubbles.vue';
 
 const drawer = ref(false);
 </script>

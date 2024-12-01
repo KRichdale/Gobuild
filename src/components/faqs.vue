@@ -214,7 +214,8 @@ $faq-content-color: #555;
 /* Responsive Design */
 @media (max-width: 600px) {
   .faq-section {
-    padding: 1rem;
+    margin: 0;
+    padding: 0;
   }
 
   .faq-heading {

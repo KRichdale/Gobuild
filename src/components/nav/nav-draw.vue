@@ -44,20 +44,14 @@
     </v-list>
   </v-navigation-drawer>
 
-  <!-- Move the bubbles outside the navigation drawer -->
-  <div class="bubbles">
-    <div
-      class="bubble"
-      v-for="(bubble, index) in bubbles"
-      :key="index"
-      :style="bubble.style"
-    ></div>
-  </div>
+  <!-- Add the Bubbles component -->
 </template>
 <script setup>
 import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import Dialog1 from '@/components/dialog1.vue';
+// Import the new Bubbles component
+import Bubbles from '@/components/bubbles.vue';
 
 const props = defineProps({
   modelValue: {
@@ -80,21 +74,6 @@ function navigateTo(path) {
   router.push(path);
 }
 
-// Generate bubble data with reactive styles
-const bubbles = ref(
-  Array.from({ length: 20 }).map(() => {
-    const size = 20 + Math.random() * 40;
-    return {
-      style: {
-        width: `${size}px`,
-        height: `${size}px`,
-        left: `${Math.random() * 100}%`,
-        animationDuration: `${3 + Math.random() * 5}s`,
-        animationDelay: `${Math.random() * 5}s`,
-      },
-    };
-  })
-);
 </script>
 <style scoped>
 .v-btn {
@@ -122,42 +101,5 @@ a:hover {
   }
 }
 
-.bubbles {
-  position: fixed; /* Cover the entire viewport */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 0; /* Ensure bubbles are behind the content */
-  pointer-events: none; /* Allow clicks through the bubbles */
-}
-
-.bubble {
-  position: absolute;
-  bottom: -50px; /* Start below the viewport */
-  background-color: #00aeef;
-  border-radius: 50%;
-  opacity: 0.7;
-  animation: float infinite;
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(0);
-    opacity: 0.7;
-  }
-  100% {
-    transform: translateY(-120vh); /* Move bubbles upwards off-screen */
-    opacity: 0;
-  }
-}
-
-/* Reduce motion for users who prefer reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .bubble {
-    animation: none;
-  }
-}
 </style>
 
