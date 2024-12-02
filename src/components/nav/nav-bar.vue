@@ -2,7 +2,7 @@
   <v-app-bar app color="white" elevated>
     <div class="app-bar-container">
       <!-- Hamburger Icon -->
-      <v-app-bar-nav-icon class="nav-icon" @click="$emit('toggle-drawer')"></v-app-bar-nav-icon>
+    <v-app-bar-nav-icon class="nav-icon" @click="$emit('toggle-drawer')"></v-app-bar-nav-icon>
       <!-- Logo moved next to Hamburger Icon -->
       <router-link to="/" class="text-decoration-none logo-link">
         <LogoIcon class="logo-icon" />

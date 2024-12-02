@@ -1,9 +1,8 @@
 <template>
   <section class="midPhotoSection">
-    <v-container fluid>
-      
+    <v-container fluid style="padding-left: 0; padding-right: 0;">
       <!-- New Title Section -->
-      <v-container fluid style="text-align: center; margin: 100px 0">
+      <v-container fluid style="text-align: center; margin: 100px 0; padding-left: 0; padding-right: 0;">
         <v-card variant="text">
           <h1
             :class="[
@@ -23,17 +22,25 @@
           </h3>
         </v-card>
       </v-container>
-
       <!-- First Row -->
       <v-row style="padding-bottom: 64px;">
-        <v-col cols="12" md="6">
+        <v-col
+          cols="12"
+          md="6"
+          :order="smAndDown ? 2 : 1" 
+        >
           <v-img
             :src="houseWashImage"
             aspect-ratio="1.9"
-            style="margin-bottom: 16px;"
+            style="margin-top: 24px; margin-bottom: 16px;"
           ></v-img>
         </v-col>
-        <v-col cols="12" md="6" style="display: flex; align-items: center;">
+        <v-col
+          cols="12"
+          md="6"
+          :order="smAndDown ? 1 : 2" 
+          style="display: flex; align-items: center;"
+        >
           <div class="content-section" style="padding: 0 16px;">
             <h3 class="text-h4 font-bold" style="padding-bottom: 16px;">
               Professional House Washing Services by GoClean
@@ -62,17 +69,25 @@
           </div>
         </v-col>
       </v-row>
-
       <!-- Second Row -->
       <v-row style="padding: 64px 0;">
-        <v-col cols="12" md="6" order="last">
+        <v-col
+          cols="12"
+          md="6"
+          :order="smAndDown ? 2 : 1" 
+        >
           <v-img
             :src="image9"
             aspect-ratio="1.9"
-            style="margin-bottom: 16px;"
+            style="margin-top: 24px; margin-bottom: 16px;"
           ></v-img>
         </v-col>
-        <v-col cols="12" md="6" style="display: flex; align-items: center;">
+        <v-col
+          cols="12"
+          md="6"
+          :order="smAndDown ? 1 : 2" 
+          style="display: flex; align-items: center;"
+        >
           <div class="content-section" style="padding: 0 16px;">
             <h3 class="text-h4 font-bold" style="padding-bottom: 16px;">
               Advanced Window Cleaning Services
@@ -102,17 +117,25 @@
           </div>
         </v-col>
       </v-row>
-
       <!-- Third Row -->
       <v-row style="padding-top: 64px;">
-        <v-col cols="12" md="6">
+        <v-col
+          cols="12"
+          md="6"
+          :order="smAndDown ? 2 : 1" 
+        >
           <v-img
             :src="image1"
             aspect-ratio="1.9"
-            style="margin-bottom: 16px;"
+            style="margin-top: 24px; margin-bottom: 16px;"
           ></v-img>
         </v-col>
-        <v-col cols="12" md="6" style="display: flex; align-items: center;">
+        <v-col
+          cols="12"
+          md="6"
+          :order="smAndDown ? 1 : 2"  
+          style="display: flex; align-items: center;"
+        >
           <div class="content-section" style="padding: 0 16px;">
             <h3 class="text-h4 font-bold" style="padding-bottom: 16px;">
               Sustainable Exterior Cleaning Solutions
@@ -144,68 +167,110 @@
 
 <script setup>
 import { useDisplay } from 'vuetify';
-import houseWashImage from '@/assets/housewashawesome.jpg';
+import houseWashImage from '@/assets/deckwash.jpg';
 import image1 from '@/assets/1.jpeg';
 import image9 from '@/assets/tall2.jpg';
 
 const { smAndDown, mdAndUp } = useDisplay();
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @use 'sass:color';
 $primary-color: #00aeef;
+
+// Add padding to the entire section
+.midPhotoSection {
+  padding: 50px 0; // Removed side padding
+
+  @media (max-width: 600px) {
+    padding: 30px 0; // Removed side padding
+  }
+}
 
 .content-section {
   position: relative;
   z-index: 1000;
   background: #ffffff;
-  padding: 2rem;
+  padding: 0; // Removed side padding
   border-radius: 12px;
   // Removed backdrop-filter and box-shadow for a solid appearance
   // backdrop-filter: blur(10px);
   // box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 600px) {
+    padding: 1.5rem 1rem; // Responsive padding
+  }
+}
+
+/* Increase spacing between rows */
+.v-row {
+  margin-bottom: 40px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 /* Media Queries for Enhanced Responsiveness */
 @media (max-width: 600px) {
   .content-section {
-    padding: 1rem;
+    padding: 1.5rem 1rem;
   }
 }
 
 /* Custom Font Weight Classes */
 .font-black {
-    font-weight: 900;
-  }
+  font-weight: 900;
+}
 
 .font-bold {
   font-weight: bold;
 }
 
-.title-section {
-  padding: 2rem 1rem;
-  margin: 2rem 0;
-}
-
-.section-title {
+.text-black {
   color: #000000;
-  font-size: 2.5rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 1.5rem;
 }
 
 /* Apply ServiceCard Title Styles */
 h1 {
   margin: 48px 0;
   padding: 48px 0;
-  @extend .font-black;
-  @extend .text-black;
+  font-weight: 900;
+  color: #000000;
+  font-size: 2.5rem; // Increased font size for main heading
+  line-height: 1.2; // Adjusted line height for better spacing
 }
 
 h3.subheading {
   margin-bottom: 48px;
   font-weight: normal;
-  @extend .text-black;
+  color: #000000;
+}
+
+h3 {
+  font-size: 1.75rem; // Increased font size for subheadings
+  line-height: 1.3; // Improved line height
+  margin-bottom: 1.5rem; // Enhanced bottom margin for spacing
+}
+
+p {
+  font-size: 1rem; // Standardized paragraph font size
+  line-height: 1.6; // Enhanced readability with better line height
+  margin-bottom: 1rem; // Consistent spacing between paragraphs
+}
+
+/* Responsive Typography Adjustments */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem; // Adjusted font size for smaller screens
+  }
+
+  h3 {
+    font-size: 1.5rem; // Adjusted subheading size for mobile devices
+  }
+
+  p {
+    font-size: 0.95rem; // Slightly smaller paragraphs for better fit
+  }
 }
 </style>

@@ -1,10 +1,6 @@
 <template>
   <div class="home">
-    <lander />
-<ServiceCard />
-<MidPhotoSection />
-<faqs />
-
+    <MidPhotoSection />
   </div>
 </template>
 

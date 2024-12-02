@@ -65,13 +65,13 @@ import { useDisplay } from 'vuetify';
 import dialog1 from '@/components/dialog1.vue';
 
 // Import the hero image
-import heroImage from '@/assets/Hero.webp';
+import heroImage from '@/assets/housewashawesome.jpg';
 
 // Use Vuetify's display composable
 const { smAndDown, mdAndUp, mdAndDown } = useDisplay();
 
 // Dynamic title logic
-const titleOptions = ['Window Cleaning', 'House Washing'];
+const titleOptions = ['House Washing','Window Cleaning'];
 const titleIndex = ref(0);
 const dynamicTitle = computed(() => titleOptions[titleIndex.value]);
 
