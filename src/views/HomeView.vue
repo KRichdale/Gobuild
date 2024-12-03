@@ -1,15 +1,20 @@
 <template>
   <div class="home">
+    <lander />
+    <serviceCard /> 
     <MidPhotoSection />
+    <contact />
+    <faqs />
   </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted } from 'vue';
+import { getAnalytics, logEvent } from 'firebase/analytics';
 import lander from '@/components/lander.vue';
 import faqs from '@/components/faqs.vue';
 import contact from '@/components/contact.vue';
-import { getAnalytics, logEvent } from 'firebase/analytics';
+import serviceCard from '@/components/serviceCard.vue';
 import ServiceCard from '@/components/serviceCard.vue';
 import MidPhotoSection from '@/components/midPhotoSection.vue';
 
