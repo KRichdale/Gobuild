@@ -1,0 +1,42 @@
+{
+  "name": "gobuild",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "homepage": "https://KRichdale.github.io/Gobuild",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "format": "prettier --write src/",
+    "deploy": "vite build && gh-pages -d dist"
+  },
+  "dependencies": {
+    "@mdi/font": "^7.4.47",
+    "@mdi/js": "^7.4.47",
+    "@vueuse/head": "^2.0.0",
+    "animate.css": "^4.1.1",
+    "firebase": "^10.14.1",
+    "vue": "^3.4.29",
+    "vue-router": "^4.3.3",
+    "vuetify": "^3.7.3"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-patch": "^1.8.0",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "@vue/eslint-config-prettier": "^9.0.0",
+    "@vue/test-utils": "^2.4.6",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.23.0",
+    "gh-pages": "^6.2.0",
+    "jsdom": "^25.0.1",
+    "prettier": "^3.2.5",
+    "sass": "^1.66.1",
+    "vite": "^5.3.1",
+    "vite-plugin-vue-devtools": "^7.3.1",
+    "vite-plugin-vuetify": "2.0.4",
+    "vite-svg-loader": "^5.1.0",
+    "vitest": "^2.1.3"
+  }
+}
