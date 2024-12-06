@@ -6,6 +6,11 @@ Light blue: (Go) #00aeef
 Justin Ideas
 # Feedback Summary
 
+FAQs can be a double-edged sword—they're only useful if they're concise, relevant, and well-crafted. If you think some of them are weak or unnecessary, that's a sign they might be cluttering the experience instead of improving it.
+
+Clean them.
+
+
 ## Customizability and Layout
 - Website lacks the easy customization of website builders.
 - Improve automatic scaling for better responsiveness.

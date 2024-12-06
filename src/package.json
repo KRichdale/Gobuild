@@ -1,0 +1,11 @@
+
+{
+  // ...existing code...
+  "homepage": "https://<your-username>.github.io/<your-repo-name>",
+  "scripts": {
+    // ...existing scripts...
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  }
+  // ...existing code...
+}
