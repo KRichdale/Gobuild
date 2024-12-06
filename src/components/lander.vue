@@ -119,7 +119,7 @@ $shadowed-bg-color: rgba(0, 0, 0, 0.55);
 
 /* Custom Font Weight Classes */
 .font-bold {
-  font-weight: bold;
+  font-weight: 900;
 }
 
 /* Container Styling */
@@ -187,13 +187,13 @@ $shadowed-bg-color: rgba(0, 0, 0, 0.55);
 
   .title-container {
     // Center vertically and horizontally on mobile devices
-    margin-top: 10%;
+    margin-top: 0; // Center vertically
+    transform: translateY(-100px); // Move title upwards by 100px
+    justify-content: center; // Center horizontally
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     text-align: center; // Ensure text is centered
-    transform: translateY(-25%); // Shift title 25% upwards on mobile
   }
 
   .v-row {
