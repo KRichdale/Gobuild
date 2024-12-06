@@ -409,4 +409,24 @@ const { smAndDown } = useDisplay();
   }
 
 
+
+  .background-section {
+  /* Stack the backgrounds: 
+     The first listed (image) is on top, 
+     the second (gradient) is beneath it. */
+  background: 
+    url('@/assets/back.svg') no-repeat bottom/cover,
+    linear-gradient(to top, #2e3192 25%, transparent 25%);
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  padding-bottom: 250px;
+  position: relative;
+}
+
+
+
 </style>
+
+

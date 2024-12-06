@@ -4,10 +4,10 @@
       <!-- Title Section -->
       <v-container fluid class="title-section text-center">
         <v-card variant="text" class="no-shadow">
-          <h1 :class="[smAndDown ? 'text-h2' : 'text-h1', 'font-black', 'text-black', 'main-heading']">
+          <h1 :class="[smAndDown ? 'text-h2' : 'text-h1', 'font-black', 'main-heading']">
             Fully Insured
           </h1>
-          <h3 class="subheading text-black">
+          <h3 class="subheading">
             Cover up to 1 million dollars for your most valuable asset
           </h3>
         </v-card>
@@ -175,6 +175,8 @@ const { smAndDown } = useDisplay();
 
 $primary-color: #00aeef;
 $max-content-width: 900px;
+$background-color: #2e3192;
+$text-color: #ffffff;
 
 /* Utility Classes */
 .no-shadow {
@@ -192,6 +194,7 @@ $max-content-width: 900px;
 
 /* Section and Layout Wrappers */
 .midPhotoSection {
+  background: $background-color;
   padding: 50px 0;
   @media (max-width: 600px) {
     padding: 30px 0;
@@ -199,7 +202,6 @@ $max-content-width: 900px;
 }
 
 .section-wrapper {
-  /* Add some horizontal padding for mobile, center content on larger screens */
   max-width: 100%;
   margin: 0 auto;
   padding: 0 16px;
@@ -230,6 +232,7 @@ $max-content-width: 900px;
 .subheading {
   margin-bottom: 24px;
   font-weight: normal;
+  color: $text-color;
 }
 
 /* Rows and Columns */
@@ -250,7 +253,6 @@ $max-content-width: 900px;
 
 /* Text Column */
 .text-col {
-  /* Ensure proper spacing for text columns */
   padding: 0 16px;
   @media (min-width: 960px) {
     padding: 0 24px;
@@ -259,7 +261,7 @@ $max-content-width: 900px;
 
 /* Content Section */
 .content-section {
-  background: #ffffff;
+  background: $background-color;
   border-radius: 12px;
   padding: 0;
 }
@@ -267,19 +269,17 @@ $max-content-width: 900px;
 /* Typography */
 .font-black {
   font-weight: 900;
+  color: $text-color;
 }
 
 .font-bold {
   font-weight: bold;
-}
-
-.text-black {
-  color: #000000;
+  color: $text-color;
 }
 
 h1 {
   font-weight: 900;
-  color: #000000;
+  color: $text-color;
   font-size: 2.5rem;
   line-height: 1.2;
   @media (max-width: 600px) {
@@ -292,7 +292,7 @@ h3 {
   font-size: 1.75rem;
   line-height: 1.3;
   margin-bottom: 1.5rem;
-  color: #000000;
+  color: $text-color;
 
   @media (max-width: 600px) {
     font-size: 1.5rem;
@@ -303,7 +303,7 @@ p {
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 1rem;
-  color: #333;
+  color: $text-color;
 
   @media (max-width: 600px) {
     font-size: 0.95rem;

@@ -1,10 +1,12 @@
 <template>
   <div class="home">
 <lander />
-<serviceCard />
+    <serviceCard />
     <MidPhotoSection />
+    <bubble />
 <faqs />
-
+    
+    
   </div>
 </template>
 
@@ -17,6 +19,7 @@ import contact from '@/components/contact.vue';
 import serviceCard from '@/components/serviceCard.vue';
 import ServiceCard from '@/components/serviceCard.vue';
 import MidPhotoSection from '@/components/midPhotoSection.vue';
+import bubble from '@/components/bubble1.vue';
 
 onMounted(() => {
   const analytics = getAnalytics();
