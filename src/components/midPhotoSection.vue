@@ -263,7 +263,8 @@ $text-color: #ffffff;
 .content-section {
   background: $background-color;
   border-radius: 12px;
-  padding: 0;
+  padding: 16px;
+  border: 1px solid #ffffff;
 }
 
 /* Typography */
