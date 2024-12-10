@@ -67,7 +67,7 @@
         <v-col
           cols="12"
           md="6"
-          :order="smAndDown ? 2 : 1"
+          :order="smAndDown ? 2 : 2"
         >
           <v-img
             :src="image9"
@@ -79,7 +79,7 @@
         <v-col
           cols="12"
           md="6"
-          :order="smAndDown ? 1 : 2"
+          :order="smAndDown ? 1 : 1"
           class="align-center text-col"
         >
           <div class="content-section">
@@ -206,10 +206,7 @@ $text-color: #ffffff;
   margin: 0 auto;
   padding: 0 16px;
 
-  @media (min-width: 960px) {
-    max-width: $max-content-width;
-    padding: 0;
-  }
+
 }
 
 /* Title Section */

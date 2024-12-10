@@ -2,7 +2,7 @@
   <v-app>
     <!-- Replace v-app-bar with NavBar component -->
     <NavBar @toggle-drawer="drawer = !drawer" />
-    <NavDraw v-model="drawer" />
+
 
     <!-- Main Content -->
     <v-main>
