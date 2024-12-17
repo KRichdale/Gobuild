@@ -27,20 +27,20 @@
         <!-- First Row -->
         <v-row justify="center">
           <!-- Window Cleaning Card -->
-          <v-col cols="12" sm="6" md="4" style="margin-bottom: 16px;">
+          <v-col cols="12" sm="6" md="4" style="margin: 16px;">
             <v-card class="white">
-              <v-card-text style="text-align: center;">
-                <v-icon size="50" color="#00aeef">mdi-water</v-icon>
+              <v-card-text class="card-content" style="text-align: center;">
+                <v-icon class="card-icon" size="50" color="#00aeef">mdi-window-closed-variant</v-icon>
               </v-card-text>
               <v-card-title>
                 <div
-                  class="text-h5 font-bold"
+                  class="text-h5 font-bold card-title"
                   style="text-align: center; padding-bottom: 12px;"
                 >
                   <h3>Window Cleaning</h3>
                 </div>
               </v-card-title>
-              <v-card-text style="text-align: center; padding-bottom: 48px;">
+              <v-card-text class="card-content" style="text-align: center;">
                 • Interior & Exterior Clean <br />
                 • Enhanced Visibility <br />
                 • Frame cleaning <br />
@@ -55,7 +55,7 @@
                 </v-btn>
               </v-card-actions>
               <div v-if="show0">
-                <v-card-text style="text-align: center;">
+                <v-card-text class="expanded-text" style="text-align: center;">
                   The <span class="font-bold">exterior</span> of your
                   property is the first thing that family and friends will
                   see when entering your home or business.
@@ -70,20 +70,20 @@
           </v-col>
 
           <!-- House Washing Card -->
-          <v-col cols="12" sm="6" md="4" style="margin-bottom: 16px;">
+          <v-col cols="12" sm="6" md="4" style="margin: 16px;">
             <v-card class="white">
-              <v-card-text style="text-align: center;">
-                <v-icon size="50" color="#00aeef">mdi-home</v-icon>
+              <v-card-text class="card-content" style="padding-top: 32px; text-align: center;">
+                <v-icon class="card-icon" size="50" color="#00aeef">mdi-home</v-icon>
               </v-card-text>
               <v-card-title>
                 <div
-                  class="text-h5 font-bold"
+                  class="text-h5 font-bold card-title"
                   style="text-align: center; padding-bottom: 12px;"
                 >
                   <h3>House Washing</h3>
                 </div>
               </v-card-title>
-              <v-card-text style="text-align: center; padding-bottom: 48px;">
+              <v-card-text class="card-content" style="text-align: center;">
                 • Refresh and shine your home<br />
                 • Clean pathways/driveways <br />
                 • High/Low-pressure wash <br />
@@ -98,7 +98,7 @@
                 </v-btn>
               </v-card-actions>
               <div v-if="show1">
-                <v-card-text style="text-align: center;">
+                <v-card-text class="expanded-text" style="text-align: center;">
                   <span class="font-bold">High-pressure</span> water
                   blasting is often required before painting or when dirt
                   is ingrained in the property exterior.
@@ -113,22 +113,22 @@
         </v-row>
 
         <!-- Second Row -->
-        <v-row justify="center">
+        <v-row justify="center" class="no-margin-top">
           <!-- Commercial Jobs Card -->
-          <v-col cols="12" sm="6" md="4" style="margin-bottom: 16px;">
+          <v-col cols="12" sm="6" md="4" style="margin: 16px;">
             <v-card class="white">
-              <v-card-text style="text-align: center;">
-                <v-icon size="50" color="#00aeef">mdi-briefcase</v-icon>
+              <v-card-text class="card-content" style="padding-top: 32px; text-align: center;">
+                <v-icon class="card-icon" size="50" color="#00aeef">mdi-briefcase</v-icon>
               </v-card-text>
               <v-card-title>
                 <div
-                  class="text-h5 font-bold"
+                  class="text-h5 font-bold card-title"
                   style="text-align: center; padding-bottom: 12px;"
                 >
-                  <h3>Commercial Jobs</h3>
+                  <h3>Commercial Cleaning</h3>
                 </div>
               </v-card-title>
-              <v-card-text style="text-align: center; padding-bottom: 48px;">
+              <v-card-text class="card-content" style="text-align: center;">
                 • Office cleaning<br />
                 • Building maintenance<br />
                 • Storefront cleaning<br />
@@ -143,7 +143,7 @@
                 </v-btn>
               </v-card-actions>
               <div v-if="show2">
-                <v-card-text style="text-align: center;">
+                <v-card-text class="expanded-text" style="text-align: center;">
                   We offer comprehensive cleaning services for commercial
                   properties, ensuring a professional appearance for your
                   business.
@@ -156,20 +156,20 @@
           </v-col>
 
           <!-- Gutter Cleaning Card -->
-          <v-col cols="12" sm="6" md="4" style="margin-bottom: 16px;">
+          <v-col cols="12" sm="6" md="4" style="margin: 16px;">
             <v-card class="white">
-              <v-card-text style="text-align: center;">
-                <v-icon size="50" color="#00aeef">mdi-water-pump</v-icon>
+              <v-card-text class="card-content" style="padding-top: 32px; text-align: center;">
+                <v-icon class="card-icon" size="50" color="#00aeef">mdi-leaf</v-icon>
               </v-card-text>
               <v-card-title>
                 <div
-                  class="text-h5 font-bold"
+                  class="text-h5 font-bold card-title"
                   style="text-align: center; padding-bottom: 12px;"
                 >
                   <h3>Gutter Cleaning</h3>
                 </div>
               </v-card-title>
-              <v-card-text style="text-align: center; padding-bottom: 48px;">
+              <v-card-text class="card-content" style="text-align: center;">
                 • Remove debris<br />
                 • Prevent blockages<br />
                 • Protect your property<br />
@@ -184,7 +184,7 @@
                 </v-btn>
               </v-card-actions>
               <div v-if="show3">
-                <v-card-text style="text-align: center;">
+                <v-card-text class="expanded-text" style="text-align: center;">
                   Regular gutter cleaning prevents water damage and
                   prolongs the life of your gutters.
                   <br /><br />
@@ -395,7 +395,7 @@ const { smAndDown } = useDisplay();
   .card-actions {
     display: flex;
     justify-content: flex-end;
-    padding: 16px; // Adjust padding as needed
+    padding: 12px 16px; // Reduced top and bottom padding
   }
 
   .card-actions .v-btn {
@@ -425,7 +425,26 @@ const { smAndDown } = useDisplay();
   position: relative;
 }
 
+.no-margin-top {
+  margin-top: 0;
+}
 
+.card-icon {
+  padding-bottom: 16px;
+}
+
+.card-title {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.card-content {
+  padding: 16px; // Add padding to main card content
+}
+
+.expanded-text {
+  padding: 64px; // Ensure sufficient padding in expanded sections
+}
 
 </style>
 

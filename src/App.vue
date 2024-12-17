@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <!-- Replace v-app-bar with NavBar component -->
-    <NavBar @toggle-drawer="drawer = !drawer" />
+
 
 
     <!-- Main Content -->
@@ -10,8 +10,7 @@
         <router-view></router-view>
       </v-container>
     </v-main>
-    <Footer />
-    
+
     <!-- Add the Bubbles component -->
   </v-app>
 </template>

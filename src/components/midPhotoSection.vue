@@ -49,15 +49,7 @@
               gentle yet effective approach ensures a thorough clean without
               compromising your property's integrity.
             </p>
-            <p>
-              GoClean's commitment to sustainability extends to our choice of
-              cleaning agents. We use biodegradable, chemical-free detergents
-              that are tough on dirt but kind to the environment. By avoiding
-              single-use plastics, we further reduce our ecological footprint.
-            </p>
-            <p>
-              Choose GoClean for a sparkling clean home and a cleaner planet.
-            </p>
+
           </div>
         </v-col>
       </v-row>
@@ -97,16 +89,6 @@
               the most challenging windows while prioritizing safety. This
               ground-based approach eliminates the need for ladders, reducing
               risks without compromising on quality.
-            </p>
-            <p>
-              GoClean's water-conserving techniques and biodegradable cleaning
-              solutions ensure refreshed and bright windows while minimizing
-              environmental impact. Our plastic-free cleaning process further
-              demonstrates our commitment to sustainability.
-            </p>
-            <p>
-              Choose GoClean for windows that sparkle and a cleaning service
-              that cares for your property and the planet.
             </p>
           </div>
         </v-col>
@@ -261,7 +243,10 @@ $text-color: #ffffff;
   background: $background-color;
   border-radius: 12px;
   padding: 16px;
-  border: 1px solid #ffffff;
+  border: 10px solid #ffffff;
+  @media (min-width: 600px) {
+    padding: 36px;
+  }
 }
 
 /* Typography */
