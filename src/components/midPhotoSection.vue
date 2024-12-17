@@ -34,9 +34,12 @@
           class="align-center text-col"
         >
           <div class="content-section">
-            <h3 class="text-h4 font-bold">
-              Professional House Washing Services by GoClean
-            </h3>
+            <div class="icon-title">
+              <v-icon color="white" size="96" class="mr-4">mdi-water</v-icon>
+              <h3 class="text-h4 font-bold">
+                Professional House Washing Services
+              </h3>
+            </div>
             <p>
               Transform your home's exterior with GoClean's eco-friendly house
               washing services. Our expert team combines cutting-edge
@@ -75,9 +78,12 @@
           class="align-center text-col"
         >
           <div class="content-section">
-            <h3 class="text-h4 font-bold">
-              Advanced Window Cleaning Services
-            </h3>
+            <div class="icon-title">
+              <v-icon color="white" size="96" class="mr-4">mdi-window-closed-variant</v-icon>
+              <h3 class="text-h4 font-bold">
+                Advanced Window Cleaning Services
+              </h3>
+            </div>
             <p>
               Experience crystal-clear views with GoClean's professional
               window cleaning services. We combine cutting-edge technology
@@ -115,9 +121,12 @@
           class="align-center text-col"
         >
           <div class="content-section">
-            <h3 class="text-h4 font-bold">
-              Sustainable Exterior Cleaning Solutions
-            </h3>
+            <div class="icon-title">
+              <v-icon color="white" size="96" class="mr-4">mdi-home</v-icon>
+              <h3 class="text-h4 font-bold">
+                Sustainable Exterior Cleaning Solutions
+              </h3>
+            </div>
             <p>
               At GoClean, we've revolutionized exterior cleaning by putting
               environmental protection at the forefront of our practices. Our
@@ -163,6 +172,7 @@ $text-color: #ffffff;
 /* Utility Classes */
 .no-shadow {
   box-shadow: none !important;
+  padding: 0 12px;
 }
 
 .text-center {
@@ -185,8 +195,6 @@ $text-color: #ffffff;
 
 .section-wrapper {
   max-width: 100%;
-  margin: 0 auto;
-  padding: 0 16px;
 
 
 }
@@ -243,8 +251,9 @@ $text-color: #ffffff;
   background: $background-color;
   border-radius: 12px;
   padding: 16px;
-  border: 10px solid #ffffff;
+  border: 5px solid #ffffff;
   @media (min-width: 600px) {
+    border: 10px solid #ffffff;
     padding: 36px;
   }
 }
@@ -291,6 +300,33 @@ p {
   @media (max-width: 600px) {
     font-size: 0.95rem;
     line-height: 1.5;
+  }
+}
+
+/* New Styles for Icon and Title Alignment */
+.icon-title {
+  display: flex;
+  align-items: center;
+  padding-bottom: 16px;
+  @media (max-width: 600px) {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+.icon-title .mr-4 {
+  margin-right: 16px;
+  @media (max-width: 600px) {
+    margin-right: 0;
+    margin-bottom: 16px;
+  }
+}
+
+/* New Styles for Icon Size on Mobile */
+@media (max-width: 600px) {
+  .icon-title v-icon {
+    transform: scale(0.75);
   }
 }
 </style>
