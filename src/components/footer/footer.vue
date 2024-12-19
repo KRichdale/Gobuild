@@ -1,180 +1,147 @@
 <template>
-    <v-footer  class="white--text" padless>
-      <v-container class="py-5">
-        <v-row>
-          <!-- Logo and Description Section -->
-          <v-col cols="12" md="4" class="text-center text-md-left">
-            <v-img
-              src="/path-to-goclean-logo.png" 
-              alt="GoClean Logo"
-              max-width="150"
-              class="mb-3"
-            ></v-img>
-            <p>
-              GoClean provides top-quality residential and commercial cleaning services
-              focused on customer satisfaction and safety.
-            </p>
-            <!-- links area -->
-            <div class="mt-6 d-flex justify-center justify-md-start">
-              <v-btn icon>
-                <v-icon color="blue">mdi-facebook</v-icon>
-              </v-btn>
-              <v-btn icon>
-                <v-icon color="blue">mdi-twitter</v-icon>
-              </v-btn>
-              <v-btn icon>
-                <v-icon color="blue">mdi-instagram</v-icon>
-              </v-btn>
-              <v-btn icon>
-                <v-icon color="blue">mdi-linkedin</v-icon>
-              </v-btn>
-              <v-btn icon>
-                <v-icon color="blue">mdi-youtube</v-icon>
-              </v-btn>
-            </div>
-          </v-col>
-  
-          <!-- Navigation Links Section -->
-          <v-col cols="12" md="3" class="text-center text-md-left">
-            <ul class="list-unstyled">
-              <li><a href="#about" class="white--text">About us</a></li>
-              <li><a href="#services" class="white--text">Services</a></li>
-              <li><a href="#commercial" class="white--text">Commercial</a></li>
-              <li><a href="#residential" class="white--text">Residential</a></li>
-              <li><a href="#pricing" class="white--text">How much</a></li>
-              <li><a href="#access" class="white--text">Access and Insurance</a></li>
-              <li><a href="#location" class="white--text">Location</a></li>
-            </ul>
-          </v-col>
-  
-          <!-- Contact Info Section -->
-          <v-col cols="12" md="3" class="text-center text-md-left">
-            <div class="contact-info">
-              <p><v-icon>mdi-phone</v-icon> 0274406794 </p>
-              <p><v-icon>mdi-email</v-icon> info@goclean.co.nz</p>
-              <p><v-icon>mdi-clock</v-icon> Mon - Fri: 5:00 AM - 8:00 PM</p>
-              <p><v-icon>mdi-map-marker</v-icon> 64 Dominion Park Street, Johnsonville, Wellington</p>
-            </div>
-          </v-col>
-  
-          <!-- Subscription Section -->
-          <v-col cols="12" md="2" class="text-center text-md-left">
-            <p>
-              Subscribe to stay connected with us and have easy access to our
-              services. As an added benefit, our email subscribers receive
-              exclusive discounts!
-            </p>
-            <v-text-field
-              label="Email"
-              dense
-              outlined
-              class="mb-2 mt-6"
-            ></v-text-field>
-            <v-btn block color="white" class="black--text rounded-pill">Subscribe</v-btn>
-          </v-col>
-        </v-row>
-        <v-divider class="white my-4"></v-divider>
-        <div class="text-center">
-          <p>© {{ new Date().getFullYear() }} GoClean. All rights reserved.</p>
-        </div>
-      </v-container>
-      <v-btn
-        fab
-        color="white"
-        class="scroll-to-top-button"
-        @click="scrollToTop"
-      >
-        <v-icon>mdi-chevron-up</v-icon>
-      </v-btn>
-    </v-footer>
-  </template>
-  
-  <script setup>
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-  </script>
-  
-  <style scoped>
-  /* Improve spacing and layout */
-  .v-footer {
-    padding: 24px 16px;
-    background-color: #2e3192; /* GoClean primary color */
-    color: #ffffff;
-  }
-  
-  .v-container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .v-col {
-    margin-bottom: 16px;
-  }
-  
-  .v-btn {
-    margin-right: 8px;
-  }
-  
-  /* Enhance link styles */
-  .white--text a {
-    color: #ffffff;
-  }
-  
-  .white--text a:hover {
-    color: #80cbc4;
-  }
+  <v-footer class="footer white--text" padless>
+    <v-container class="py-5">
+      <serviceIcons />
+      <v-row>
+        <!-- Logo and Description Section -->
+        <v-col cols="12" md="4" class="text-center text-md-left mb-4 mb-md-0">
+          <v-img
+            src="/path-to-goclean-logo.png" 
+            alt="GoClean Logo"
+            max-width="150"
+            class="mb-3"
+          ></v-img>
+          <p class="mb-0">
+            GoClean provides top-quality residential and commercial cleaning services,
+            focused on customer satisfaction and safety.
+          </p>
+        </v-col>
 
-  /* Add spacing to Contact Info section */
-  .contact-info p {
-    margin-bottom: 12px;
-    color: #ffffff; /* Ensure paragraph text is white */
-  }
-  
-  .contact-info p:last-child {
-    margin-bottom: 0;
-  }
+        <!-- Useful Links Section -->
+        <v-col cols="12" md="4" class="text-center text-md-left mb-4 mb-md-0">
+        </v-col>
 
-  /* Remove specific icon colors to inherit white */
-  .contact-info v-icon {
-    color: #ffffff;
-  }
+        <!-- Contact Info Section -->
+        <v-col cols="12" md="4" class="text-left">
+          <h3 class="footer-heading">Contact Us</h3>
+          <div class="contact-info">
+            <p><v-icon>mdi-phone</v-icon><a href="tel:0274406794" class="phone-link">0274406794</a></p>
+            <p><v-icon>mdi-email</v-icon>info@goclean.co.nz</p>
+            <p><v-icon>mdi-clock</v-icon> Mon - Fri: 5:00 AM - 8:00 PM</p>
+            <p><v-icon>mdi-map-marker</v-icon> Johnsonville, Wellington</p>
+          </div>
+        </v-col>
+      </v-row>
+      <v-divider class="white my-4"></v-divider>
+      <div class="text-center">
+        <p class="mb-0">© {{ new Date().getFullYear() }} GoClean. All rights reserved.</p>
+      </div>
+    </v-container>
+    <v-btn
+      fab
+      color="white"
+      class="scroll-to-top-button"
+      @click="scrollToTop"
+    >
+      <v-icon>mdi-chevron-up</v-icon>
+    </v-btn>
+  </v-footer>
+</template>
 
-  /* Ensure subscription section text is white */
-  .v-col p {
-    color: #ffffff;
-  }
+<script setup>
+import serviceIcons from '../service-icons.vue';
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+</script>
 
-  /* Change icon colors in links area to match background */
-  .v-footer .v-btn v-icon {
-    color: #2e3192; /* Match GoClean primary color */
-  }
+<style scoped>
+.footer {
+  background-color: #2e3192; /* GoClean primary color */
+  color: #ffffff;
+}
 
-  /* Optionally add hover effect */
-  .v-footer .v-btn:hover v-icon {
-    color: #80cbc4; /* Example hover color */
-  }
+.v-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-  /* Change social media icon colors to match background */
-  .v-footer .d-flex .v-btn v-icon {
-    color: #2e3192; /* Same as footer background color */
-  }
+/* Typography and headings */
+.footer-heading {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
 
-  /* Optionally, add a contrasting background to the buttons */
-  .v-footer .d-flex .v-btn {
-    background-color: #ffffff; /* White background for icon buttons */
-    border-radius: 50%;
-  }
+/* Link list styling */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
-  /* Add hover effect */
-  .v-footer .d-flex .v-btn:hover v-icon {
-    color: #80cbc4; /* Change icon color on hover */
-  }
+.footer-links li {
+  margin-bottom: 8px;
+}
 
-  .scroll-to-top-button {
-    position: fixed;
-    bottom: 16px;
-    right: 16px;
-    z-index: 1000;
-  }
-  </style>
+.footer-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #80cbc4;
+}
+
+p .v-icon{
+  padding-right: 24px;
+}
+
+/* Contact Info */
+.contact-info p {
+  margin-bottom: 12px;
+  color: #ffffff; 
+  font-size: 0.95rem;
+  padding: 6px;
+}
+.contact-info p:last-child {
+  margin-bottom: 0;
+}
+.contact-info v-icon {
+  color: #ffffff;
+  margin-right: 8px;
+}
+
+.phone-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.phone-link:hover {
+  color: #80cbc4;
+}
+
+/* Scroll to top button */
+.scroll-to-top-button {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 1000;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease;
+}
+
+.scroll-to-top-button:hover v-icon {
+  color: #2e3192;
+}
+
+/* Ensure white text where needed */
+.white--text p, 
+.white--text span,
+.white--text h3 {
+  color: #ffffff;
+}
+</style>

@@ -36,7 +36,7 @@ const svgPath = [
   display: flex;
   justify-content: center; // Horizontally center
   align-items: center;    // Vertically center
-  flex-wrap: wrap;        // Allow wrapping if necessary
+  flex-wrap: nowrap;      // Prevent icons from stacking
   margin: 0;
   padding: 0;
 }

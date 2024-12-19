@@ -251,9 +251,9 @@ $text-color: #ffffff;
   background: $background-color;
   border-radius: 12px;
   padding: 16px;
-  border: 25px solid #ffffff;
+  border: 5px solid #ffffff;
   @media (min-width: 600px) {
-    border: 25px solid #ffffff;
+    border: 10px solid #ffffff;
     padding: 36px;
   }
 }

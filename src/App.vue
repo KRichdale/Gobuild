@@ -11,7 +11,8 @@
       </v-container>
     </v-main>
 
-    <!-- Add the Bubbles component -->
+
+
   </v-app>
 </template>
 
