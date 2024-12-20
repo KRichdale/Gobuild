@@ -226,7 +226,8 @@ $text-color: #ffffff;
 .content-row {
   margin-bottom: 64px;
   @media (max-width: 600px) {
-    margin-bottom: 40px;
+    margin-bottom: 185px;
+    
   }
 }
 
