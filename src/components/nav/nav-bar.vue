@@ -9,7 +9,7 @@
       <div class="flex-grow-1"></div>
 
       <!-- Add the phone icon and number -->
-      <a href="tel:+640274406794" class="phone-link">
+      <a href="tel:+640274406794" class="phone-link" v-if="!isMobile">
         <v-icon>mdi-phone</v-icon>
         027-440-6794
       </a>

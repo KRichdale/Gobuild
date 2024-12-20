@@ -1,5 +1,5 @@
 <template>
-  <section class="hero">
+  <section class="hero" :style="{ height: smAndDown ? '700px' : '100vh' }">
     <v-container fluid class="hero-container pa-0">
       <v-img
         :src="heroImage"
@@ -11,15 +11,30 @@
         <div class="text-container">
           <h1
             :key="titleKey"
-            :class="[
-              smAndDown ? 'text-h2' : 'text-h1',
-              'title-words',
-              'animate__animated',
-              'animate__fadeInDown' // Using fadeInDown for a more obvious animation
+            :class="[ 
+              smAndDown ? 'text-h2' : 'text-h1', 
+              'title-words', 
+              'animate__animated', 
+              'animate__fadeInDown' 
             ]"
           >
             {{ dynamicTitle }}<br />Experts
           </h1>
+          <!-- Add the dialog1 button here -->
+          <Dialog1 title="Free Quote" class="free-quote-btn">
+            <template #dialog-activator="{ dialogProps, openDialog }">
+              <v-btn
+                class="contact-button"
+                color="#00aeef"
+                variant="elevated"
+                size="x-large"
+                v-bind="dialogProps"
+                @click="() => { dialogProps.onClick(); openDialog(); }"
+              >
+                Contact Us
+              </v-btn>
+            </template>
+          </Dialog1>
         </div>
       </v-img>
     </v-container>
@@ -35,6 +50,7 @@ import 'animate.css';
 
 // Your hero image import
 import heroImage from '@/assets/housewashawesome.jpg';
+import Dialog1 from './dialog1.vue';
 
 const { smAndDown } = useDisplay();
 
@@ -64,7 +80,6 @@ $primary-color: #00aeef;
 $overlay-color: rgba(0, 0, 0, 0.55);
 
 .hero-container {
-  height: 100vh;
   position: relative;
   padding: 0;
 }
@@ -99,6 +114,15 @@ $overlay-color: rgba(0, 0, 0, 0.55);
   font-weight: 900;
 }
 
+/* Adjust the button padding to prevent it from feeling tight */
+.contact-button {
+  font-weight: bold;
+  padding: 16px 32px; /* Increase padding as desired */
+  font-size: 1.25rem; 
+  position: relative; 
+  top: 100px;
+}
+
 /* Responsive title sizing */
 @media (max-width: 600px) {
   h1.text-h1 {
@@ -107,6 +131,11 @@ $overlay-color: rgba(0, 0, 0, 0.55);
 
   h1.text-h2 {
     font-size: 1.8rem;
+  }
+
+  .contact-button {
+    padding: 12px 24px;
+    font-size: 1rem;
   }
 }
 
