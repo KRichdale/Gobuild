@@ -41,17 +41,11 @@
               </h3>
             </div>
             <p>
-              Transform your home's exterior with GoClean's eco-friendly house
-              washing services. Our expert team combines cutting-edge
-              technology with environmental responsibility to deliver
-              exceptional results.
-            </p>
-            <p>
-              We utilize low-pressure water systems that not only conserve
-              water but also protect your home's surfaces from damage. This
-              gentle yet effective approach ensures a thorough clean without
-              compromising your property's integrity.
-            </p>
+  Transform your home's exterior with GoClean's professional eco-friendly house washing services. Our expert team uses cutting-edge soft washing techniques and environmentally responsible methods to deliver outstanding results for all types of homes.
+</p>
+<p>
+  Our low-pressure washing system (also known as soft washing) is safe for all exterior surfaces, including siding, brick, stucco, and more. This gentle yet effective approach removes dirt, grime, mold, and algae without the risk of damage associated with high-pressure washing, while also conserving water.
+</p>
 
           </div>
         </v-col>
@@ -85,17 +79,11 @@
               </h3>
             </div>
             <p>
-              Experience crystal-clear views with GoClean's professional
-              window cleaning services. We combine cutting-edge technology
-              with eco-conscious practices to deliver unparalleled results for
-              both residential and commercial properties.
-            </p>
-            <p>
-              Our innovative telescopic pole systems allow us to reach even
-              the most challenging windows while prioritizing safety. This
-              ground-based approach eliminates the need for ladders, reducing
-              risks without compromising on quality.
-            </p>
+  Experience crystal-clear views with GoClean's professional window cleaning services. We use cutting-edge, pure water technology and eco-conscious methods to deliver unparalleled results for both residential window cleaning and commercial window cleaning projects.
+</p>
+<p>
+  Our innovative telescopic pole window cleaning system allows us to safely and efficiently clean even hard-to-reach windows from the ground. This ladder-free approach minimizes risks, protects your property, and ensures a spot-free, streak-free finish every time.
+</p>
           </div>
         </v-col>
       </v-row>
@@ -128,23 +116,14 @@
               </h3>
             </div>
             <p>
-              At GoClean, we've revolutionized exterior cleaning by putting
-              environmental protection at the forefront of our practices. Our
-              innovative approach proves that effective cleaning doesn't have
-              to come at the cost of the planet.
-            </p>
-            <p>
-              By employing low-pressure water systems, we significantly reduce
-              water consumption compared to traditional high-pressure methods.
-              This not only conserves a precious resource but also ensures a
-              gentler clean for your property.
-            </p>
-            <p>
-              Our carefully formulated, eco-friendly cleaning solutions
-              deliver powerful results without harmful chemicals. Combined
-              with our plastic-free approach, we're setting new standards in
-              sustainable cleaning services.
-            </p>
+  GoClean provides innovative and environmentally responsible exterior cleaning services. We believe in delivering exceptional results without compromising the planet. Our commitment to sustainable practices makes us a leader in eco-friendly cleaning.
+</p>
+<p>
+  Using low-pressure washing techniques, we significantly reduce water consumption compared to traditional high-pressure washing. This eco-friendly approach conserves water and provides a safer, gentler clean for your home or business, protecting surfaces from damage.
+</p>
+<p>
+  Our biodegradable and non-toxic cleaning solutions deliver powerful cleaning power without harmful chemicals. Combined with our commitment to minimizing plastic waste, we offer truly sustainable exterior cleaning services. Choose GoClean for environmentally conscious cleaning that delivers outstanding results.
+</p>
           </div>
         </v-col>
       </v-row>

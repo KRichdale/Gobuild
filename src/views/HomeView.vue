@@ -1,12 +1,13 @@
 <template>
   <div class="home">
-
-
-  <mid-photo-section />
+    <lander />
+    <serviceCard />
+    <midPhotoSection />
+    <bubble />
 <faqs />
   
 
-    
+
   </div>
 </template>
 

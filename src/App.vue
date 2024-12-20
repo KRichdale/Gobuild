@@ -3,7 +3,7 @@
     <!-- Replace v-app-bar with NavBar component -->
 
 
-<NavBar />
+<NavBar/>
 
     <!-- Main Content -->
     <v-main>
@@ -11,8 +11,7 @@
         <router-view></router-view>
       </v-container>
     </v-main>
-
-<Footer />
+<Footer />>
 
   </v-app>
 </template>
@@ -30,8 +29,4 @@ import Bubbles from '@/components/bubbles.vue';
 const drawer = ref(false);
 </script>
 
-<style scoped>
-/* Remove styles that have been moved to NavBar and NavDraw */
 
-/* Remaining styles specific to App.vue */
-</style>
