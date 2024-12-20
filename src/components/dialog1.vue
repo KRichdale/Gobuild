@@ -2,7 +2,6 @@
   <!-- Dialog Component -->
   <v-dialog v-model="dialog" :fullscreen="isMobile" max-width="600">
     <!-- Activator Slot -->
-    <!-- Instead of directly using a <v-btn> here, we pass the activator props to a named slot. -->
     <template #activator="{ props }">
       <slot name="dialog-activator" :dialog-props="props" :open-dialog="openDialog">
         <!-- Fallback content if no slot is provided -->
@@ -30,7 +29,7 @@
       <v-form @submit.prevent="validate">
         <v-card-text>
           <v-row>
-            <v-col cols="12" sm="6">
+            <v-col cols="6">
               <v-text-field
                 label="First Name*"
                 v-model="formData.firstName"
@@ -38,7 +37,7 @@
                 required
               />
             </v-col>
-            <v-col cols="12" sm="6">
+            <v-col cols="6">
               <v-text-field
                 label="Last Name*"
                 v-model="formData.lastName"
@@ -46,7 +45,7 @@
                 required
               />
             </v-col>
-            <v-col cols="12">
+            <v-col cols="6"> <!-- Changed from cols="12" to cols="6" -->
               <v-text-field
                 label="Email*"
                 type="email"
@@ -55,19 +54,19 @@
                 required
               />
             </v-col>
-            <v-col cols="12" sm="6">
-              <v-text-field
-                label="Address*"
-                v-model="formData.address"
-                required
-              />
-            </v-col>
-            <v-col cols="12" sm="6">
+            <v-col cols="6"> <!-- Ensure Phone remains cols="6" -->
               <v-text-field
                 label="Phone*"
                 type="tel"
                 v-model="formData.phone"
                 :rules="phoneRules"
+                required
+              />
+            </v-col>
+            <v-col cols="12">
+              <v-text-field
+                label="Address*"
+                v-model="formData.address"
                 required
               />
             </v-col>
@@ -82,22 +81,12 @@
         </v-card-text>
 
         <!-- Form Actions -->
-        <v-card-actions style="display: flex; justify-content: space-between;">
-          <v-btn
-            variant="text"
-            color="grey"
-            to="/Terms"
-            size="x-small"
-          >
-            Terms of Service
-          </v-btn>
-
-          <div style="display: flex; align-items: center;">
+        <v-card-actions>
+          <div style="display: flex; align-items: center; width: 100%;">
             <v-btn
               variant="text"
               @click="closeDialog"
               color="grey"
-              style="margin-right: 16px;"
               size="large"
             >
               Cancel
@@ -114,6 +103,17 @@
             </v-btn>
           </div>
         </v-card-actions>
+
+        <!-- Terms of Service Button Below -->
+        <v-btn
+          variant="text"
+          color="grey"
+          to="/Terms"
+          size="x-small"
+          class="terms-button"
+        >
+          Terms of Service
+        </v-btn>
       </v-form>
     </v-card>
 
@@ -132,7 +132,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { useDisplay } from 'vuetify';
-import Logo from '@/assets/goclean-logo.svg'; // Ensure SVG is handled correctly
+import Logo from '@/assets/goclean-logo.svg';
 import { db } from '../fb.js';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { getAnalytics, logEvent } from 'firebase/analytics';
@@ -146,25 +146,18 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-  // Other props
 });
 
-// Dialog visibility
 const dialog = ref(false);
-
-// Snackbar visibility
 const snackbar = ref(false);
 
-// Responsive design
 const { xs } = useDisplay();
 const isMobile = computed(() => xs.value);
 
-// Open dialog based on props
 if (props.openOnDesktop && !isMobile.value) {
   dialog.value = true;
 }
 
-// Form data
 const formData = ref({
   firstName: '',
   lastName: '',
@@ -174,7 +167,6 @@ const formData = ref({
   details: '',
 });
 
-// Validation rules
 const nameRules = [
   (v) => !!v || 'Name is required',
   (v) => (v && v.length <= 50) || 'Name must be less than 50 characters',
@@ -190,21 +182,17 @@ const phoneRules = [
   (v) => /^\+?[0-9]{7,15}$/.test(v) || 'Phone number must be valid',
 ];
 
-// Open dialog method
 const openDialog = () => {
   const analytics = getAnalytics();
   logEvent(analytics, 'open_quote_form');
   dialog.value = true;
 };
 
-// Close dialog method
 const closeDialog = () => {
   dialog.value = false;
 };
 
-// Form submission
 const validate = async () => {
-  // Manually validate each field
   let valid = true;
 
   const firstNameValid = nameRules.every((rule) => rule(formData.value.firstName) === true);
@@ -218,27 +206,23 @@ const validate = async () => {
   if (valid) {
     snackbar.value = true;
     try {
-      // Get the current date and time in New Zealand Time
       const nzDate = new Date().toLocaleString('en-NZ', {
         timeZone: 'Pacific/Auckland',
       });
 
       const user = {
         ...formData.value,
-        time: serverTimestamp(), // Store server timestamp in UTC
-        nzTime: nzDate, // Store formatted NZ time string
+        time: serverTimestamp(),
+        nzTime: nzDate,
       };
 
-      // Save to Firestore
       await addDoc(collection(db, 'gocleanTester'), user);
 
-      // Send message
       await addDoc(collection(db, 'messages'), {
         to: '+64274406794',
         body: `${formData.value.firstName} ${formData.value.lastName}\n${formData.value.phone}\n${formData.value.address}\n${formData.value.email}\n${formData.value.details || 'N/A'}\nTime: ${nzDate}`,
       });
 
-      // Reset form data
       formData.value = {
         firstName: '',
         lastName: '',
@@ -248,7 +232,6 @@ const validate = async () => {
         details: '',
       };
 
-      // Close dialog after a delay
       setTimeout(() => {
         closeDialog();
       }, 500);
@@ -269,7 +252,7 @@ const validate = async () => {
   max-height: 60px;
   z-index: 1000;
   display: block;
-  margin: 0 auto; /* Center horizontally */
+  margin: 0 auto;
 }
 
 /* Dialog Card */
@@ -278,14 +261,14 @@ const validate = async () => {
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   display: flex;
-  flex-direction: column; /* Ensure children stack vertically */
+  flex-direction: column;
 }
 
 /* Card Title with Logo */
 .v-card-title {
   display: flex;
   align-items: center;
-  justify-content: center; /* Ensure horizontal centering */
+  justify-content: center;
   padding: 24px 16px 16px;
 }
 
@@ -318,7 +301,7 @@ const validate = async () => {
 .v-btn {
   text-transform: none;
   font-weight: 600;
-  flex-grow: 0;   /* Prevent buttons from stretching */
+  flex-grow: 0;
   flex-shrink: 0;
 }
 
@@ -339,8 +322,17 @@ const validate = async () => {
 .v-card-actions {
   padding: 16px;
   display: flex;
-  justify-content: space-between; /* Adjusted to space between */
-  align-items: center;       /* Prevent vertical stretching */
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column; /* Change to column to stack buttons vertically */
+  align-items: flex-start; /* Align buttons to the start */
+}
+
+.v-card-actions div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px; /* Space between button groups */
 }
 
 .v-card-actions .v-btn {
@@ -351,12 +343,17 @@ const validate = async () => {
   margin-left: 0;
 }
 
+.terms-button {
+  align-self: flex-end; /* Align Terms button to the end */
+  margin-top: 8px; /* Add top margin for spacing */
+}
+
 /* Snackbar */
 .v-snackbar {
   border-radius: 8px;
   font-weight: 500;
   display: flex;
-  justify-content: center; /* Center the snackbar content */
+  justify-content: center;
 }
 
 /* Mobile Adjustments */
@@ -370,39 +367,13 @@ const validate = async () => {
   }
 
   .v-btn {
-    margin-right: 2px; 
+    margin-right: 2px;
     justify-content: center;
   }
 
-  .v-card-actions {
-    flex-direction: column;
-    align-items: center; /* Center buttons instead of stretching */
-  }
-
-  .v-card-actions .v-btn {
-    margin: 8px 0;
-    width: 100%;        /* Ensure buttons span full width */
-  }
-
-  .v-card-actions .v-btn:last-child {
-    margin-bottom: 0;
-  }
-
-  .v-card-actions v-btn[to="/Terms"] {
-    order: 3;
+  .terms-button {
+    align-self: center; /* Center align on mobile */
     margin-top: 8px;
-  }
-
-  .v-card-actions v-btn[type="submit"] {
-    order: 1;
-    margin-top: 8px;
-  }
-
-  .v-card-actions div {
-    order: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 }
 </style>
