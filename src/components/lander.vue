@@ -1,35 +1,27 @@
 <template>
   <section class="hero">
-    <v-container id="lander" fluid>
-      <v-row style="height: 100%;">
-        <v-col cols="12">
-          <v-img
-            :height="smAndDown ? '700px' : '100vh'"
-            :src="heroImage"
-            cover
-            class="hero-image"
+    <v-container fluid class="hero-container pa-0">
+      <v-img
+        :src="heroImage"
+        cover
+        class="hero-image"
+        :height="smAndDown ? '700px' : '100vh'"
+      >
+        <div class="overlay"></div>
+        <div class="text-container">
+          <h1
+            :key="titleKey"
+            :class="[
+              smAndDown ? 'text-h2' : 'text-h1',
+              'title-words',
+              'animate__animated',
+              'animate__fadeInDown' // Using fadeInDown for a more obvious animation
+            ]"
           >
-            <div class="overlay"></div>
-            <v-row class="content-row">
-              <v-col cols="12" md="6" class="title-container">
-                <div class="title-content">
-                  <transition name="fade">
-                    <h1
-                      :key="dynamicTitle"
-                      :class="[smAndDown ? 'text-h2' : 'text-h1', 'font-bold', 'title-words']"
-                    >
-                      {{ dynamicTitle }}<br />Experts
-                    </h1>
-                  </transition>
-                </div>
-              </v-col>
-              <v-col cols="12" class="dialog-container">
-                <dialog1 title="CONTACT US" :openOnDesktop="mdAndUp" />
-              </v-col>
-            </v-row>
-          </v-img>
-        </v-col>
-      </v-row>
+            {{ dynamicTitle }}<br />Experts
+          </h1>
+        </div>
+      </v-img>
     </v-container>
   </section>
 </template>
@@ -37,25 +29,45 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { useDisplay } from 'vuetify';
-import dialog1 from '@/components/dialog1.vue'; // Correct path
-import heroImage from '@/assets/housewashawesome.jpg'; // Correct path
 
-const { smAndDown, mdAndUp } = useDisplay();
+// Import Animate.css globally
+import 'animate.css';
 
+// Your hero image import
+import heroImage from '@/assets/housewashawesome.jpg';
+
+const { smAndDown } = useDisplay();
+
+// Array of titles to cycle through
 const titleOptions = ['House Washing', 'Window Cleaning'];
 const titleIndex = ref(0);
 const dynamicTitle = computed(() => titleOptions[titleIndex.value]);
 
+// Key to force re-render of the h1 to re-trigger animation
+const titleKey = ref(0);
+
+// On mount, start the interval to change the title every 5 seconds
 onMounted(() => {
-  setInterval(() => {
+  console.log('Component mounted, starting title updates...');
+  function updateTitle() {
     titleIndex.value = (titleIndex.value + 1) % titleOptions.length;
-  }, 5000);
+    titleKey.value += 1; // Forces h1 to re-mount and run the animation again
+    console.log(`Title changed to: ${dynamicTitle.value}`);
+    setTimeout(updateTitle, 5000);
+  }
+  setTimeout(updateTitle, 5000);
 });
 </script>
 
 <style lang="scss" scoped>
 $primary-color: #00aeef;
 $overlay-color: rgba(0, 0, 0, 0.55);
+
+.hero-container {
+  height: 100vh;
+  position: relative;
+  padding: 0;
+}
 
 .hero-image {
   position: relative;
@@ -68,77 +80,26 @@ $overlay-color: rgba(0, 0, 0, 0.55);
   width: 100%;
   height: 100%;
   background-color: $overlay-color;
-  z-index: 0;
-}
-
-.title-words {
-  color: #ffffff;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-.font-bold {
-  font-weight: 900;
-}
-
-#lander {
-  background-color: $primary-color;
-}
-
-.content-row {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; // Key for vertical centering
-  align-items: center;
-  position: relative;
   z-index: 1;
 }
 
-.title-content {
-  /* Styles for the title background if needed. Remove if not needed. */
-  /* background-color: rgba(0, 0, 0, 0.3);
-  padding: 1rem; */
-}
-
-.title-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.text-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% - 150px));
+  z-index: 2;
   text-align: center;
-  width: 100%;
-  padding: 0 1rem;
-  box-sizing: border-box;
-
-  @media (min-width: 1200px) {
-    padding-left: 200px;
-    text-align: left;
-    align-items: flex-start;
-  }
+  color: #fff;
 }
 
-.dialog-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-
-  @media (min-width: 960px) {
-    margin-top: 0;
-    padding-left: 20px;
-  }
+.title-words {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 900;
 }
 
+/* Responsive title sizing */
 @media (max-width: 600px) {
   h1.text-h1 {
     font-size: 2.5rem;

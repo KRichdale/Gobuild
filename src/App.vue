@@ -3,6 +3,7 @@
     <!-- Replace v-app-bar with NavBar component -->
 
 
+<NavBar />
 
     <!-- Main Content -->
     <v-main>
@@ -11,7 +12,7 @@
       </v-container>
     </v-main>
 
-
+<Footer />
 
   </v-app>
 </template>

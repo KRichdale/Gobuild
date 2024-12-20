@@ -2,17 +2,21 @@
   <!-- Dialog Component -->
   <v-dialog v-model="dialog" :fullscreen="isMobile" max-width="600">
     <!-- Activator Slot -->
+    <!-- Instead of directly using a <v-btn> here, we pass the activator props to a named slot. -->
     <template #activator="{ props }">
-      <v-btn
-        color="#00aeef"
-        variant="elevated"
-        v-bind="props"
-        @click="openDialog"
-        style="font-weight: bold;"
-        size="large"
-      >
-        {{ title }}
-      </v-btn>
+      <slot name="dialog-activator" :dialog-props="props" :open-dialog="openDialog">
+        <!-- Fallback content if no slot is provided -->
+        <v-btn
+          color="#00aeef"
+          variant="elevated"
+          v-bind="props"
+          @click="openDialog"
+          style="font-weight: bold;"
+          size="large"
+        >
+          {{ title }}
+        </v-btn>
+      </slot>
     </template>
 
     <!-- Dialog Content -->

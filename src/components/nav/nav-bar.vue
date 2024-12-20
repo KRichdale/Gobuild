@@ -1,30 +1,57 @@
 <template>
   <v-app-bar app color="white" elevated>
     <div class="app-bar-container">
-      <!-- Hamburger Icon -->
-    
-    <!-- <v-app-bar-nav-icon class="nav-icon" @click="$emit('toggle-drawer')"></v-app-bar-nav-icon> -->
-      
-      <!-- Logo moved next to Hamburger Icon -->
+      <!-- Logo and optional nav icon -->
       <router-link to="/" class="text-decoration-none logo-link">
         <LogoIcon class="logo-icon" />
       </router-link>
 
-      <!-- Spacer to push Free Quote Button to right -->
       <div class="flex-grow-1"></div>
 
-      <!-- Free Quote Button -->
-      <Dialog1 title="Free Quote" class="free-quote-btn" />
+      <!-- Add the phone icon and number -->
+      <a href="tel:+640274406794" class="phone-link">
+        <v-icon>mdi-phone</v-icon>
+        027-440-6794
+      </a>
+
+      <!-- Using the named slot from Dialog1 to customize the Free Quote button -->
+      <Dialog1 title="Free Quote" class="free-quote-btn">
+        <template #dialog-activator="{ dialogProps, openDialog }">
+          <v-btn
+            color="#00aeef"
+            variant="elevated"
+            :size="!isMobile ? 'x-large' : undefined"
+            style="font-weight: bold; margin-right: 5px;"
+            v-bind="dialogProps"
+            @click="() => { dialogProps.onClick(); openDialog(); }"
+          >
+            Free Quote
+          </v-btn>
+        </template>
+      </Dialog1>
     </div>
   </v-app-bar>
 </template>
 
 <script setup>
-import { defineEmits } from 'vue';
-import LogoIcon from '@/assets/goclean-logo.svg';
-import Dialog1 from '@/components/dialog1.vue';
+import LogoIcon from '@/assets/goclean-logo.svg'
+import Dialog1 from '@/components/dialog1.vue'
+import { ref, onMounted, onUnmounted } from 'vue'
+import { VIcon } from 'vuetify/components'
 
-// const emit = defineEmits(['toggle-drawer']);
+const isMobile = ref(window.innerWidth <= 600)
+
+const handleResize = () => {
+  isMobile.value = window.innerWidth <= 600
+}
+
+onMounted(() => {
+  window.addEventListener('resize', handleResize)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', handleResize)
+})
 </script>
 
 <style scoped>
@@ -68,7 +95,7 @@ import Dialog1 from '@/components/dialog1.vue';
 }
 
 .free-quote-btn {
-  padding: 16px 48px 16px 32px; /* top, right, bottom, left */
+  padding: 16px 48px 16px 32px;
   font-size: 18px;
   padding-right: 40px; /* added right padding */
 }
@@ -88,6 +115,23 @@ a:hover {
 
 .logo-link {
   padding-left: 16px; /* add left padding */
+}
+
+.phone-link {
+  display: flex;
+  align-items: center;
+  color: #00aeef; /* GoClean light blue */
+  font-weight: bold;
+  margin-right: 16px;
+  text-decoration: none;
+}
+
+.phone-link:hover {
+  color: #007bb6; /* Darker blue on hover */
+}
+
+.phone-link .v-icon {
+  margin-right: 8px;
 }
 
 @media (max-width: 600px) {
